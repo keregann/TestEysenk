@@ -1,6 +1,10 @@
 package com.keregann;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class QuestionaireDao {
     // JDBC driver name and database URL
@@ -115,5 +119,65 @@ public class QuestionaireDao {
 
     }//end main
 
-}
+    public static Map<Integer, Item>  getEysenckQuiestionaireItems_A(){
+        Map<Integer, Item> eysenckQuizItems = new HashMap<Integer, Item>();
+        Connection conn = null;
+        Statement stmt = null;
+        try {
+            //STEP 2: Register JDBC driver
+            Class.forName(JDBC_DRIVER);
+
+            //STEP 3: Open a connection
+            System.out.println("Connecting to a selected database...");
+            conn = DriverManager.getConnection(DB_URL, USER, PASS);
+            System.out.println("Connected database successfully...");
+
+            //STEP 4: Execute a query
+            System.out.println("Creating statement...");
+            stmt = conn.createStatement();
+
+            String sql = "SELECT * FROM eysenckItems_A ORDER BY id";
+            ResultSet rs = stmt.executeQuery(sql);
+            //STEP 5: Extract data from result set
+
+            while (rs.next()) {
+                //Retrieve by column name
+                int id = rs.getInt("id");
+                String question = rs.getString("question");
+                int consideredValue = rs.getInt("consideredValue");
+
+                eysenckQuizItems.put(id, new Item(id, question, consideredValue));
+            }
+            rs.close();
+        } catch (SQLException se) {
+            //Handle errors for JDBC
+            se.printStackTrace();
+        } catch (Exception e) {
+            //Handle errors for Class.forName
+            e.printStackTrace();
+        } finally {
+            //finally block used to close resources
+            try {
+                if (stmt != null)
+                    conn.close();
+            } catch (SQLException se) {
+            }// do nothing
+            try {
+                if (conn != null)
+                    conn.close();
+            } catch (SQLException se) {
+                se.printStackTrace();
+            }//end finally try
+        }//end try
+        System.out.println("Goodbye!");
+        return eysenckQuizItems;
+
+    }//end main
+
+
+
+
+
+    }
+
 

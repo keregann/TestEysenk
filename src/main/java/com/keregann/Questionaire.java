@@ -1,6 +1,7 @@
 package com.keregann;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class Questionaire {
@@ -49,13 +50,7 @@ public class Questionaire {
         this.items = items;
     }
 
-    public Map<Integer,Item> eysenckQuiestionaireItems_A(){
-        Map<Integer, Item> eysenkquizItems = new HashMap<Integer, Item>();
-        //Ulterior va trebui de creat un table si de extras itemii din DB de creat ItemDAO
-        eysenkquizItems.put(1, new Item(1, "item 1" , 0));
 
-        return null;
-    }
     @Override
     public String toString() {
         return this.getClass().getSimpleName()+ " id : " + getId()  + ", subject : " + this.getSubject() + ", result : " + this.getResult();

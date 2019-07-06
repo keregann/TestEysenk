@@ -46,4 +46,9 @@ public class Item {
     public void setAnsweredValue(int answeredValue) {
         this.answeredValue = answeredValue;
     }
+
+    @Override
+    public String toString() {
+        return "Id : " + this.itemId + ", Question : " + this.question + ", consideredValue : " + this.consideredValue;
+    }
 }
