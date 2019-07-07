@@ -44,22 +44,29 @@ import javax.servlet.http.HttpServletResponse;
         }
 
         public static void main(String[] args) {
-            Questionaire questionaire = QuestionaireService.findBySubject("Ion");
-            System.out.println(questionaire);
-            Questionaire q1 = QuestionaireService.createNewQuestionareRecord(7, "Misha", "null", QuestionaireDao.getEysenckQuiestionaireItems_A());
-            Questionaire q2 = QuestionaireService.createNewQuestionareRecord(8, "Ana", "null", QuestionaireDao.getEysenckQuiestionaireItems_A());
-            Questionaire q3 = QuestionaireService.createNewQuestionareRecord(9, "Jora", "null", QuestionaireDao.getEysenckQuiestionaireItems_A());
-            System.out.println("From java : " + q1);
-            QuestionaireService.insertQuestionaireRecord(q1);
-            System.out.println("From java : " + q2);
-            QuestionaireService.insertQuestionaireRecord(q2);
-            System.out.println("From java : " + q3);
-            QuestionaireService.insertQuestionaireRecord(q3);
-            System.out.println("From DB : " + QuestionaireService.findBySubject(q1.getSubject()));
-            System.out.println("From DB : " + QuestionaireService.findBySubject(q2.getSubject()));
-            System.out.println("From DB : " + QuestionaireService.findBySubject(q3.getSubject()));
 
-            System.out.println(q1.getItems().get(1).getQuestion());
+            Questionaire q1 = QuestionaireService.createNewQuestionareRecord(7, "Misha", "null", QuestionaireDao.getEysenckQuiestionaireItems_A());
+
+            System.out.println("From java : " + q1);
+
+            //raspund la intrebari
+          QuestionaireService.inputQuestionaireAnswers(q1);
+
+
+            //printeaza toata informatia despre qestionar
+            QuestionaireService.printQuestionaireInfo(q1);
+
+            QuestionaireService.setQuestionaireResult(q1);
+
+            System.out.println("Rezolvare : " + q1);
+            //obiectul qestionar pleaca pe DB (raspunsurile nu pleaca inca)
+
+            QuestionaireService.insertQuestionaireRecord(q1);
+
+            //obiectul questionar vine de pe DB
+            System.out.println("From DB : " + QuestionaireService.findBySubject(q1.getSubject()));
+
+
         }
 
         @Override

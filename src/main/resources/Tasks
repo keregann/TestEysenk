@@ -1,3 +1,5 @@
 - Traducerea sau gasirea intrebarilor in engleza
 - Crearea variantei B in baza de date
-- Introdu in db intrebarile testului
+
+- creaza o functie care scrie raspunsurile + keyle in db
+- implementeaza jdbc cu Spring

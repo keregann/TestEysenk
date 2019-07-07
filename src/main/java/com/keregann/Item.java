@@ -51,4 +51,5 @@ public class Item {
     public String toString() {
         return "Id : " + this.itemId + ", Question : " + this.question + ", consideredValue : " + this.consideredValue;
     }
+
 }
