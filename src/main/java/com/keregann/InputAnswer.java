@@ -3,12 +3,12 @@ package com.keregann;
 import java.util.Scanner;
 
 public class InputAnswer {
+
     public static Integer inputAnswer() {
 
         int answer = 0;
         Scanner scanner = new Scanner(System.in);
         do {
-            //aici poate fi in neregula
             answer = scanner.nextInt();
         }
         while (!isValid(answer));

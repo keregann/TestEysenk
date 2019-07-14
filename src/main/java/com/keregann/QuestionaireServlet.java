@@ -10,10 +10,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 
-
-    /**
-     * Created by Alex Corghencea on 18 July 2017.
-     */
    @WebServlet("/questionaireservlet")
     public class QuestionaireServlet extends HttpServlet {
 
@@ -26,7 +22,6 @@ import javax.servlet.http.HttpServletResponse;
             resp.setContentType("text/html");
             PrintWriter printWriter = resp.getWriter();
             Questionaire questionaire = QuestionaireService.findBySubject("Ion");
-          //  System.out.println(questionaire);
             String htmlCode = getHtmlCode(questionaire);
 
             printWriter.println(htmlCode);
@@ -45,22 +40,23 @@ import javax.servlet.http.HttpServletResponse;
 
         public static void main(String[] args) {
 
-            Questionaire q1 = QuestionaireService.createNewQuestionareRecord(7, "Misha", "null", QuestionaireDao.getEysenckQuiestionaireItems_A());
+            Questionaire q1 = QuestionaireService.createNewQuestionareRecord( "Misha", "null", QuestionaireDao.getEysenckQuiestionaireItems_A());
 
             System.out.println("From java : " + q1);
 
             //raspund la intrebari
-          QuestionaireService.inputQuestionaireAnswers(q1);
+         //   QuestionaireService.inputQuestionaireAnswers(q1);
 
 
             //printeaza toata informatia despre qestionar
-            QuestionaireService.printQuestionaireInfo(q1);
+         //   QuestionaireService.printQuestionaireInfo(q1);
 
-            QuestionaireService.setQuestionaireResult(q1);
+            //se realizeaza calculul rezultatului si il atribuie variabilei rezult din obiectul qestionar
+          //  QuestionaireService.setQuestionaireResult(q1);
 
-            System.out.println("Rezolvare : " + q1);
+          //  System.out.println("Rezolvare : " + q1);
+
             //obiectul qestionar pleaca pe DB (raspunsurile nu pleaca inca)
-
             QuestionaireService.insertQuestionaireRecord(q1);
 
             //obiectul questionar vine de pe DB

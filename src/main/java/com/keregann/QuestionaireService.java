@@ -1,7 +1,8 @@
 package com.keregann;
 
+
+import java.util.Arrays;
 import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
 
 public class QuestionaireService {
@@ -15,9 +16,8 @@ public class QuestionaireService {
         QuestionaireDao.insertQuestionaireRecord(questionaire);
     } //end method
 
-    public static Questionaire createNewQuestionareRecord(int id, String subject, String result, Map<Integer, Item> items){
+    public static Questionaire createNewQuestionareRecord(String subject, String result, Map<Integer, Item> items){
         Questionaire q = new Questionaire(subject, result);
-        q.setId(id);
         q.setItems(items);
        return q;
     } //end method
@@ -37,6 +37,11 @@ public class QuestionaireService {
         System.out.println(item.getQuestion());
     } //end method
 
+    public static void setQuestionaireResult(Questionaire questionaire){
+        questionaire.setResult(ResultCalculation.finalRezult(questionaire));
+    }
+
+    //Test method - must to be moved in separate class or pacakge
     public static void printQuestionaireInfo(Questionaire questionaire){
         System.out.println(questionaire);
         for(Item item : questionaire.getItems().values()){
@@ -44,11 +49,14 @@ public class QuestionaireService {
         }
     } //end method
 
+    //Method to move items answers values to an array - must to be moved
+    public static int[] answerValuesArray(Questionaire questionaire){
+        int[] arr = new int[questionaire.getItems().size()];
 
-    public static void setQuestionaireResult(Questionaire questionaire){
-        questionaire.setResult(ResultCalculation.finalRezult(questionaire));
+        for(Item item : questionaire.getItems().values()){ //fii atent la values ???
+            arr[item.getItemId() - 1] = item.getAnsweredValue();
+        }
+        return arr;
     }
-
-
 
 }

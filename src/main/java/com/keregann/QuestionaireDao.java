@@ -1,9 +1,8 @@
 package com.keregann;
 
 import java.sql.*;
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class QuestionaireDao {
@@ -15,6 +14,7 @@ public class QuestionaireDao {
     static final String USER = "postgres";
     static final String PASS = "aria5100";
 
+    //method for inserting the questionaireObject in db
     public static void insertQuestionaireRecord(Questionaire  questionaire){
         Connection conn = null;
         Statement stmt = null;
@@ -32,11 +32,14 @@ public class QuestionaireDao {
             stmt = conn.createStatement();
 
             String sql = "INSERT INTO questionaires " +
-                    "VALUES (" + questionaire.getId() + ", '" + questionaire.getSubject() + "', '" + questionaire.getResult() + "')";
-//            String sql = "INSERT INTO questionaires " +
-//                    "VALUES (1, 'Ana', 'null')";
+                    "VALUES ('" + questionaire.getSubject() + "', '" + questionaire.getResult() + "')";
+            //" + questionaire.getId() + ", '
             stmt.executeUpdate(sql);
 
+            String sq2 = "INSERT INTO questionaire_answers (answers) " +
+                         "VALUES ( ARRAY " + Arrays.toString(QuestionaireService.answerValuesArray(questionaire)) + ")";
+
+            stmt.executeUpdate(sq2);
             System.out.println("Inserted records into the table...");
 
         }catch(SQLException se){
@@ -60,9 +63,9 @@ public class QuestionaireDao {
             }//end finally try
         }//end try
         System.out.println("Goodbye!");
-    }//end main
+    }//end method
 
-
+    //method for extracting the questionaire object by subject name from DB
     public static Questionaire findBySubject(String subject) {
         Questionaire questionaire = null;
         Connection conn = null;
@@ -117,8 +120,9 @@ public class QuestionaireDao {
         System.out.println("Goodbye!");
         return questionaire;
 
-    }//end main
+    }//end method
 
+    //method for extracting eysenk questionaire items (romanian variant A) from DB
     public static Map<Integer, Item>  getEysenckQuiestionaireItems_A(){
         Map<Integer, Item> eysenckQuizItems = new HashMap<Integer, Item>();
         Connection conn = null;
@@ -172,12 +176,8 @@ public class QuestionaireDao {
         System.out.println("Goodbye!");
         return eysenckQuizItems;
 
-    }//end main
+    }//end method
 
-
-
-
-
-    }
+}
 
 

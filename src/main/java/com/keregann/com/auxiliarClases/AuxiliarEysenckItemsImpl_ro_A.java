@@ -1,10 +1,7 @@
 package com.keregann.com.auxiliarClases;
 
 import com.keregann.Item;
-
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class AuxiliarEysenckItemsImpl_ro_A {

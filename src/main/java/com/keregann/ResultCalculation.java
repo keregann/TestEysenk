@@ -1,5 +1,6 @@
 package com.keregann;
 
+//Vezi ce faci cu modificatorii de non acces
 public class ResultCalculation {
     private int extraversion = 0;
     private int nevrotism = 0;
@@ -107,8 +108,7 @@ public class ResultCalculation {
         } else if (sincerity >= 7 && sincerity <= 9) {
             System.out.println("Sunteti nesincer in raspunsuri si rezultatul testului v-a fi eronat. Din acest motiv rugam sa reporniti testul si fiti cit mai sinceri posibil");
             return false;
-            // TODO here: Create function witch will ask the user if he want to repeat the test, if yes - program return to begin, if no - say thank you and close the program
-        }
+        }  // AICI durdom cu returnurile
          return false;
     }
 

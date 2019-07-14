@@ -1,5 +1,11 @@
+High priority level tasks
+- creaza o functie care scrie raspunsurile + keyle in db
+- modifica denumirile functilor dupa modelul CRUD
+
+
+
+Low priority level tasks
 - Traducerea sau gasirea intrebarilor in engleza
 - Crearea variantei B in baza de date
+- implementeaza jdbc cu Spring/Hybernate ????
 
-- creaza o functie care scrie raspunsurile + keyle in db
-- implementeaza jdbc cu Spring
