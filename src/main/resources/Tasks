@@ -1,6 +1,7 @@
 High priority level tasks
-- creaza o functie care scrie raspunsurile + keyle in db
+- creaza o functie care scrie raspunsurile + keyle in db (implimentat)
 - modifica denumirile functilor dupa modelul CRUD
+- cauta cum se combina html paginile cu servletu (infara de jsoup librarie)
 
 
 

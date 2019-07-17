@@ -1,0 +1,10 @@
+- Cum pot folosi/manipula elementele dintr-o pagina web deja existenta
+   inafara de a folosi JSP  in loc de HTML? (La moment eu numai JSP vad ca model
+   de interactiune dintre servlet si pagina web)
+
+- Daca de exemplu eu am nevoie de o functie unde treb sa folosesc butoanele "previous" si "next"
+  prin care se listeaza lista de intrebari. Servletu pentre aceasta se face separat, intr-o noua clasa?
+
+- In itemView.html este un field  <input type="submit" value="Rezultat" style="visibility: hidden" />
+  Cum pot face din java sa pot schimba  << style="visibility: visible" >>? Bussines logica este in aceea
+  ca daca toate 57 de intrebari au raspunsurile atribuite pe pagina apare butonul "Rezultat".
